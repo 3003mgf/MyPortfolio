@@ -1,0 +1,19 @@
+import React from 'react';
+import { HashRouter, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import SkillPage from './pages/SkillsPage';
+import Projects from './pages/Projects';
+
+const Router = () => {
+  return ( 
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/skills" element={<SkillPage/>}/>
+        <Route path="/projects" element={<Projects/>}/>
+      </Routes>
+    </HashRouter>
+   );
+}
+ 
+export default Router;
