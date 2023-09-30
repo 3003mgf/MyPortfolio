@@ -46,7 +46,9 @@ const AboutMe = () => {
         <Container>
           <Row className='align-items-center'>
             <Col xs={12} md={6} xl={5} className='d-flex justify-content-center align-items-center'>
-                <div className='img-div'></div>
+                <div className='img-div'>
+                  <img src="/images/profile.jpeg" alt="abc" width={400} />
+                </div>
             </Col>
             <Col xs={12} md={6} xl={7} className='px-5 py-5'>
               <h4>{tr[lS].aboutMeTitle}</h4>

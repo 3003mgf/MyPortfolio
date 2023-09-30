@@ -13,6 +13,7 @@ const Skills = () => {
     if(getTheme){
       setTheme(getTheme);
     }
+    window.scrollTo(0, 0);
   }, []);
 
   const [module1, setModule1] = useState(false);
@@ -93,9 +94,9 @@ const Skills = () => {
                   <div className='d-flex flex-column gap-30 pb-5'>
                     <div>
                       {module1 ? 
-                        <div><i className="fa-solid fa-angle-down me-1" onClick={()=> setModule1(false)}></i><b>Module 1 - Foundations (27 Hours)</b></div>
+                        <div><i className="fa-solid fa-angle-down me-1" onClick={()=> setModule1(false)}></i><b>Module 1 - Foundations</b></div>
                         :
-                        <div><i className="fa-solid fa-angle-right me-1" onClick={()=> setModule1(true)}></i><b>Module 1 - Foundations (27 Hours)</b></div>
+                        <div><i className="fa-solid fa-angle-right me-1" onClick={()=> setModule1(true)}></i><b>Module 1 - Foundations</b></div>
 
                       }
                       {module1 && <ul>
@@ -119,9 +120,9 @@ const Skills = () => {
                     </div>
                     <div>
                       {module2 ? 
-                        <div><i className="fa-solid fa-angle-down me-1" onClick={()=> setModule2(false)}></i><b>Module 2 - Front End (42 Hours)</b></div>
+                        <div><i className="fa-solid fa-angle-down me-1" onClick={()=> setModule2(false)}></i><b>Module 2 - Front End</b></div>
                         :
-                        <div><i className="fa-solid fa-angle-right me-1" onClick={()=> setModule2(true)}></i><b>Module 2 - Front End (42 Hours)</b></div>
+                        <div><i className="fa-solid fa-angle-right me-1" onClick={()=> setModule2(true)}></i><b>Module 2 - Front End</b></div>
 
                       }
                       {module2 && <ul>
@@ -143,9 +144,9 @@ const Skills = () => {
                     </div>
                     <div>
                       {module3 ? 
-                        <div><i className="fa-solid fa-angle-down me-1" onClick={()=> setModule3(false)}></i><b>Module 3 - Back End (21 Hours)</b></div>
+                        <div><i className="fa-solid fa-angle-down me-1" onClick={()=> setModule3(false)}></i><b>Module 3 - Back End</b></div>
                         :
-                        <div><i className="fa-solid fa-angle-right me-1" onClick={()=> setModule3(true)}></i><b>Module 3 - Back End (21 Hours)</b></div>
+                        <div><i className="fa-solid fa-angle-right me-1" onClick={()=> setModule3(true)}></i><b>Module 3 - Back End</b></div>
 
                       }
                       {module3 && <ul>
@@ -162,9 +163,9 @@ const Skills = () => {
 
                     <div>
                       {module4 ? 
-                        <div><i className="fa-solid fa-angle-down me-1" onClick={()=> setModule4(false)}></i><b>Module 4 - Data Base (15 Hours)</b></div>
+                        <div><i className="fa-solid fa-angle-down me-1" onClick={()=> setModule4(false)}></i><b>Module 4 - Data Base</b></div>
                         :
-                        <div><i className="fa-solid fa-angle-right me-1" onClick={()=> setModule4(true)}></i><b>Module 4 - Data Base (15 Hours)</b></div>
+                        <div><i className="fa-solid fa-angle-right me-1" onClick={()=> setModule4(true)}></i><b>Module 4 - Data Base</b></div>
 
                       }
                       {module4 && <ul>

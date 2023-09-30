@@ -8,6 +8,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 
 const NavBar = () => {
+  const refAudioEs = useRef();
+  const refAudioEn = useRef();
+  const refAudioFr = useRef();
   const data = useContext(LanguageContext);
   const refCollapse = useRef();
   const { tr, lS, setLS, setTheme, theme } = data;
@@ -35,15 +38,29 @@ const NavBar = () => {
   };
 
 
-  const handleSpeak = () =>{
-    let speechMessage = new SpeechSynthesisUtterance(); 
-    if(lS === "en"){
-      speechMessage.text = "Hey visitor! Welcome to my portfolio, here you will be able to know me better and see my projects. As you can see, at my right you have different flags, you will be able to change the language by clicking in the flags. Also, this website counts with a dark mode functionality, so if you want to rest your eyes, just click in the dark mode button. I hope you like it, thank you for visiting us!"
-      speechSynthesis.speak(speechMessage);
-    };
-    if(lS === "es"){
-      speechMessage.text = "Hola visitante! Bienvenido a mi portafolio, aqui seras capaz de conocerme mejor y ver mis proyectos. Como podras ver, a mi derecha tienes diferentes banderas, you will be able to change the language by clicking in the flags. Also, this website counts with a dark mode functionality, so if you want to rest your eyes, just click in the dark mode button. I hope you like it, thank you for visiting us!"
-      speechSynthesis.speak(speechMessage);
+  const handleSpeak = (e) =>{
+    if(!e.target.classList.contains("active")){
+      if(lS === "en"){
+        e.target.classList.add("active");
+        refAudioEn.current.addEventListener("ended", ()=>{
+          e.target.classList.remove("active");
+        })
+        refAudioEn.current.play();
+      };
+      if(lS === "es"){
+        e.target.classList.add("active");
+        refAudioEs.current.addEventListener("ended", ()=>{
+          e.target.classList.remove("active");
+        })
+        refAudioEs.current.play();
+      };
+      if(lS === "fr"){
+        e.target.classList.add("active");
+        refAudioFr.current.addEventListener("ended", ()=>{
+          e.target.classList.remove("active");
+        })
+        refAudioFr.current.play();
+      };
     }
   };
 
@@ -57,10 +74,16 @@ const NavBar = () => {
     }
   };
 
+
   return ( 
     <Navbar expand="lg" id='navbar-header' className={`${scrolled ? "scrolled" : ""} navbar-main-div ${theme === "dark" ? "dark" : ""}`}>
       <Container>
         <Navbar.Brand className='d-flex align-items-center gap-15'>
+          <div>
+            <audio src="/images/us.wav" ref={refAudioEn}></audio>
+            <audio src="/images/spanish.wav" ref={refAudioEs}></audio>
+            <audio src="/images/french.wav" ref={refAudioFr}></audio>
+          </div>
           <div className={`logo-div ${theme === "dark" ? "dark" : ""}`}>
             <img src="images/robot-grey.svg" alt="" className='robot-icon' onClick={handleSpeak} />
           </div>

@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { LanguageContext } from '../context/Language';
+import { PopUp } from './WelcomePop';
 
 const Landing = () => {
   const data = useContext(LanguageContext);
-  const { tr, lS, setLS } = data;
+  const { tr, lS } = data;
 
   const [loopNum, setLoopNum] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -12,14 +13,25 @@ const Landing = () => {
   const [delta, setDelta] = useState(300 - Math.random() * 100);
   const period = 2000;
   const toRotate = [tr[lS].mainP1, tr[lS].mainP2, tr[lS].mainP3];
-
+  const [popOpen, setPopOpen] = useState(false);
   useEffect(() => {
     let ticker = setInterval(()=>{
       tick();
     },delta);
-
     return () => {clearInterval(ticker)}
   }, [text]);
+
+  useEffect(() => {
+    let getDisablePop = localStorage.getItem("disable-pop");
+
+    if(!getDisablePop){
+      setTimeout(()=>{
+        setPopOpen(true);
+      },1000)
+    }
+
+    window.scrollTo(0, 0);
+  }, []);
 
   const tick = () =>{
     let i = loopNum % toRotate.length;
@@ -42,8 +54,10 @@ const Landing = () => {
     }
   };
 
+  
   return ( 
-    <section className="landing" id="home">
+    <section className="landing position-relative" id="home">
+      <PopUp popOpen={popOpen} setPopOpen={setPopOpen}/>
       <Container>
         <Row className='align-items-center'>
           <Col xs={12} md={6} xl={7}>
